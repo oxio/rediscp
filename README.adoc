@@ -1,4 +1,4 @@
-== rediscp
+= rediscp
 
 Copies keys from one Redis instance to another.
 
@@ -6,6 +6,22 @@ The source and target addresses should be specified in the format `redis://[:pas
 
 Example:
 `rediscp redis://:srcpass@localhost:6379/0 redis://:targetpass@localhost:6380/1`
+
+== Installation
+
+=== go install
+
+----
+go install github.com/oxio/rediscp@latest
+----
+
+=== wget
+
+----
+wget https://github.com/oxio/kv/releases/download/v1.0.0/rediscp
+chmod +x kv
+mv kv /usr/local/bin/
+----
 
 === Usage
 `rediscp <source-addr> <target-addr> [flags]`

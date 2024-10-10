@@ -1,4 +1,4 @@
-module rediscp
+module github.com/oxio/rediscp
 
 go 1.22.2
 
