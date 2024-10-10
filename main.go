@@ -1,8 +1,8 @@
 package main
 
 import (
+	"github.com/oxio/rediscp/cmd"
 	"os"
-	"rediscp/cmd"
 )
 
 func main() {

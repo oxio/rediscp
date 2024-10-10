@@ -3,7 +3,7 @@ package cmd
 import (
 	"errors"
 	"fmt"
-	"rediscp/package/rediscp"
+	"github.com/oxio/rediscp/package/rediscp"
 
 	"github.com/spf13/cobra"
 )
