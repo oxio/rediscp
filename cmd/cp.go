@@ -50,14 +50,16 @@ rediscp redis://:srcpass@localhost:6379/0 redis://:targetpass@localhost:6380/1`,
 
 			// Copy the keys from source Redis to target Redis
 			copied, skipped, err := copier.CopyKeys(ctx, sourceClient, targetClient, keys)
+
 			fmt.Printf("Copied total of %d keys, skipped %d keys\n", copied, skipped)
+
 			if err != nil {
 				var e *rediscp.ErrBusykey
 				if errors.As(err, &e) {
 					return fmt.Errorf(
 						"key \"%s\" already exists in target Redis. "+
 							"Use one of the following flags to bypass this error: "+
-							"--skip-existing or --replace-existing",
+							"--skip-existing or --replace-existing\n",
 						e.Key,
 					)
 				}

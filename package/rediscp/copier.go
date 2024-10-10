@@ -33,7 +33,7 @@ type ErrBusykey struct {
 	Key string
 }
 
-var _ error = (*ErrBusykey)(nil)
+var _ error = ErrBusykey{}
 
 func (e ErrBusykey) Error() string {
 	return fmt.Sprintf("key \"%s\" already exists in target Redis", e.Key)
@@ -97,9 +97,8 @@ func (c *RedisCopier) CopyKeys(ctx context.Context, sourceClient, targetClient *
 					}
 					skipped++
 					continue
-				} else {
-					return copied, skipped, ErrBusykey{Key: key}
 				}
+				return copied, skipped, &ErrBusykey{Key: key}
 			}
 			return copied, skipped, fmt.Errorf("failed to restore key %s to target Redis: %w", key, err)
 		}
