@@ -34,3 +34,8 @@ Example:
 | Verbose output (default: `false`)
 |===
 
+=== Restrictions
+
+The tool is currently not safe to use under high concurrency Redis instances. It should only be used in development environments.
+
+Also the amount of data copied is limited, as all the keys are copied in one single batch.
