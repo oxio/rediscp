@@ -1,0 +1,36 @@
+== rediscp
+
+Copies keys from one Redis instance to another.
+
+The source and target addresses should be specified in the format `redis://[:password]@host:port[/db]`.
+
+Example:
+`rediscp redis://:srcpass@localhost:6379/0 redis://:targetpass@localhost:6380/1`
+
+=== Usage
+`rediscp <source-addr> <target-addr> [flags]`
+
+==== Flags
+
+
+[cols="1,1"]
+|===
+| `-h, --help`
+| help for rediscp
+
+| `--ignore-ttl`
+| Weather or not to ignore TTL of keys (default: `false`)
+
+| `-k, --keys string`
+| Keys pattern to copy eg. "foo:*" (default `*`)
+
+| `-r, --replace-existing`
+| Weather or not to replace already existing keys in the target Redis (default: `false`)
+
+| `-s, --skip-existing`
+| Weather or not to skip already existing keys in the target Redis (ignoring `BUSYKEY` error) (default: `false`)
+
+| `-v, --verbose`
+| Verbose output (default: `false`)
+|===
+

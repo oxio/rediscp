@@ -1,0 +1,31 @@
+version: '3'
+
+vars:
+  BINARY_NAME: rediscp
+
+tasks:
+
+  default:
+    silent: true
+    cmds:
+      - task -l
+
+  test:
+    desc: "Run tests"
+    cmds:
+      - go test -v ./...
+
+  build:
+    desc: "Build binary"
+    cmds:
+      - go build -o build/{{.BINARY_NAME}}
+
+  build:small:
+    desc: "Build small binary"
+    cmds:
+      - go build -ldflags "-w" -o build/{{.BINARY_NAME}}
+
+  build:smaller:
+    desc: "Build smaller binary"
+    cmds:
+      - go build -ldflags "-s" -o build/{{.BINARY_NAME}}
